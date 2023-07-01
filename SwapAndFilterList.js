@@ -16,4 +16,20 @@ function reverseArray(array) {
 }
 
 const reversedArray = reverseArray(inputArray);
-console.log(reversedArray);
+
+const sortedArray = [];
+
+for (let i = 0; i <= reversedArray.length - 1; i++) {
+  const c = reversedArray[i].toString();
+  let item = "";
+  for (let j = 0; j < c.length; j++) {
+    const element = parseInt(c[j]);
+    if (element < 4) {
+      item += element;
+    }
+  }
+  if (item != "") {
+    sortedArray.push(parseInt(item));
+  }
+}
+console.log(sortedArray);
