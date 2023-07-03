@@ -1,58 +1,26 @@
-const number = 4;
-const ss = parseInt(number.toString() + number.toString());
-const inputArray = [-5, -4, 1, 2, 3, 3, 7, 15, 31];
-const newArray = [];
+const { mergeSort, findFirstNumber } = require("./utils.js");
 
-for (let i = 0; i <= inputArray.length - 1; i++) {
-  const squared = Math.pow(inputArray[i], 2);
-  if (squared <= ss) {
-    newArray.push(squared);
-  }
-}
-console.log(newArray);
-console.log(ss);
-
-function mergeSort(array) {
-  if (array.length <= 1) {
-    return array;
-  }
-  const indexMiddleArray = Math.floor(array.length / 2);
-  const leftArray = array.slice(0, indexMiddleArray);
-  const rightArray = array.slice(indexMiddleArray);
-
-  const sortedLeftArray = mergeSort(leftArray);
-  const sortedRightArray = mergeSort(rightArray);
-
-  return merge(sortedLeftArray, sortedRightArray);
-}
-
-function merge(leftArray, rightArray) {
-  let result = [];
-  let leftIndex = 0;
-  let rightIndex = 0;
-
-  while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
-    if (leftArray[leftIndex] < rightArray[rightIndex]) {
-      result.push(leftArray[leftIndex]);
-      leftIndex++;
-    } else {
-      result.push(rightArray[rightIndex]);
-      rightIndex++;
+/**
+ * Function that takes an array, squares its elements, filters them,
+ * and sorts them in ascending order.
+ *
+ * @param {Array} array - An array of elements in ascending order.
+ * @param {int} S - Selected number
+ * @returns {Array} - The array with squared, filtered, and sorted
+ * elements in ascending order.
+ */
+function squaredAndSort(array, S) {
+  const SS = parseInt(S.toString() + S.toString());
+  const newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    const squared = Math.pow(array[i], 2);
+    if (squared <= SS) {
+      newArray.push(squared);
     }
   }
-
-  while (leftIndex < leftArray.length) {
-    result.push(leftArray[leftIndex]);
-    leftIndex++;
-  }
-
-  while (rightIndex < rightArray.length) {
-    result.push(rightArray[rightIndex]);
-    rightIndex++;
-  }
-
-  return result;
+  return mergeSort(newArray);
 }
 
-const sortedArray = mergeSort(newArray);
-console.log(sortedArray);
+const S = findFirstNumber("a4725d5fd7834844404833c65119e0c2");
+const inputArray = [-5, -4, 1, 2, 3, 3, 7, 15, 31];
+console.log(squaredAndSort(inputArray, S));
