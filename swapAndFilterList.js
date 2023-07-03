@@ -1,7 +1,8 @@
-const { swapArray } = require("./utils.js");
+const { swapArray, findFirstNumber } = require("./utils.js");
 
 /**
  * Function that swaps and filter digits if they are equal or greater than S
+ *
  * @param {Array} array - List of n numbers where n <= 100
  * @param {int} S - Selected number
  * @returns {Array} - The array with swapped and filtered elements
@@ -29,5 +30,5 @@ function swapAndFilter(array, S) {
 }
 
 const inputArray = [13, 5, 3, 12, 7, 4, 29, 41, 14, 44];
-const S = 4;
+const S = findFirstNumber("a4725d5fd7834844404833c65119e0c2");
 console.log(swapAndFilter(inputArray, S));
