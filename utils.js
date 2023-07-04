@@ -1,4 +1,14 @@
 /**
+ * Function that takes a string and returns the first number found in the string as an integer.
+ * @param {string} string - The input string.
+ * @returns {number} - The first number found in the string as an integer, or 6 if no number is found.
+ */
+function findFirstNumber(string = "c50ad4d76fe") {
+  const match = string.match(/\d/); // Find the first number match in the strings
+  return match ? parseInt(match[0]) : 6;
+}
+
+/**
  * Function that swaps the elements of an array.
  *
  * @param {Array} array - An list of elements.
@@ -25,27 +35,25 @@ function swapArray(array) {
 function mergeSort(array) {
   const merge = (leftArray, rightArray) => {
     let result = [];
-    let leftIndex = 0;
-    let rightIndex = 0;
 
-    while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
-      if (leftArray[leftIndex] < rightArray[rightIndex]) {
-        result.push(leftArray[leftIndex]);
-        leftIndex++;
+    while (leftArray.length > 0 && rightArray.length > 0) {
+      if (leftArray[0] < rightArray[0]) {
+        result.push(leftArray[0]);
+        leftArray.splice(0, 1);
       } else {
-        result.push(rightArray[rightIndex]);
-        rightIndex++;
+        result.push(rightArray[0]);
+        rightArray.splice(0, 1);
       }
     }
 
-    while (leftIndex < leftArray.length) {
-      result.push(leftArray[leftIndex]);
-      leftIndex++;
+    while (leftArray.length > 0) {
+      result.push(leftArray[0]);
+      leftArray.splice(0, 1);
     }
 
-    while (rightIndex < rightArray.length) {
-      result.push(rightArray[rightIndex]);
-      rightIndex++;
+    while (rightArray.length > 0) {
+      result.push(rightArray[0]);
+      rightArray.splice(0, 1);
     }
 
     return result;
@@ -65,16 +73,6 @@ function mergeSort(array) {
     return merge(sortedLeftArray, sortedRightArray);
   };
   return sort(array);
-}
-
-/**
- * Function that takes a string and returns the first number found in the string as an integer.
- * @param {string} string - The input string.
- * @returns {number} - The first number found in the string as an integer, or 6 if no number is found.
- */
-function findFirstNumber(string = "c50ad4d76fe") {
-  const match = string.match(/\d/); // Find the first number match in the string
-  return match ? parseInt(match[0]) : 6;
 }
 
 module.exports = {
