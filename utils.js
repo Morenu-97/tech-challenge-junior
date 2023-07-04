@@ -3,27 +3,9 @@
  * @param {string} string - The input string.
  * @returns {number} - The first number found in the string as an integer, or 6 if no number is found.
  */
-function findFirstNumber(string = "c50ad4d76fe") {
+function findFirstNumber(string = "c60ad4d76fe") {
   const match = string.match(/\d/); // Find the first number match in the strings
   return match ? parseInt(match[0]) : 6;
-}
-
-/**
- * Function that swaps the elements of an array.
- *
- * @param {Array} array - An list of elements.
- * @returns {Array} - The array with swapped elements.
- */
-function swapArray(array) {
-  const newArray = [...array];
-  const length = newArray.length;
-  const midIndex = Math.floor(length / 2);
-  for (let i = 0; i < midIndex; i++) {
-    const tempIndex = newArray[i];
-    newArray[i] = newArray[length - 1 - i];
-    newArray[length - 1 - i] = tempIndex;
-  }
-  return newArray;
 }
 
 /**
@@ -76,7 +58,6 @@ function mergeSort(array) {
 }
 
 module.exports = {
-  swapArray,
   mergeSort,
   findFirstNumber,
 };

@@ -1,4 +1,4 @@
-const { swapArray, findFirstNumber } = require("./utils.js");
+const { filterNumberByDigit, findFirstNumber } = require("./utils.js");
 
 /**
  * Function that swaps and filter digits if they are equal or greater than S
@@ -8,25 +8,35 @@ const { swapArray, findFirstNumber } = require("./utils.js");
  * @returns {number[]} - The array with swapped and filtered elements
  */
 function swapAndFilter(array, S) {
-  const swappedArray = swapArray(array);
   const filteredArray = [];
-
-  for (let i = 0; i < swappedArray.length; i++) {
-    const element = swappedArray[i].toString();
-    let filteredElement = "";
-
-    for (let j = 0; j < element.length; j++) {
-      const digit = parseInt(element[j]);
-      if (digit < S) {
-        filteredElement += digit;
-      }
-    }
-
-    if (filteredElement !== "") {
-      filteredArray.push(parseInt(filteredElement));
+  for (let i = array.length - 1; i >= 0; i--) {
+    const filteredNumber = filterNumberByDigit(parseInt(array[i]), S);
+    if (!Number.isNaN(filteredNumber)) {
+      filteredArray.push(filteredNumber);
     }
   }
   return filteredArray;
+}
+
+/**
+ * Function that removes any digit of the number equal or greater than S
+ *
+ * @param {number} originalNumber - Original number.
+ * @param {number} S - Number S to be verified with.
+ * @returns {number} - Number with digits S removed.
+ */
+function filterNumberByDigit(originalNumber, S) {
+  const element = originalNumber.toString();
+  let filteredElement = "";
+
+  for (let j = 0; j < element.length; j++) {
+    const digit = parseInt(element[j]);
+    if (digit < S) {
+      filteredElement += digit;
+    }
+  }
+
+  return parseInt(filteredElement);
 }
 
 const inputArray = [13, 5, 3, 12, 7, 4, 29, 41, 14, 44];
