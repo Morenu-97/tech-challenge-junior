@@ -1,7 +1,7 @@
 const { mergeSort, findFirstNumber } = require("./utils.js");
 
 /**
- * Function that takes an array, squares its elements, filters them,
+ * Function that takes an array, squares its elements, filters them
  * and sorts them in ascending order.
  *
  * @param {number[]} array - An array of elements in ascending order.
