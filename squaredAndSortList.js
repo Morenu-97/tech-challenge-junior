@@ -4,9 +4,9 @@ const { mergeSort, findFirstNumber } = require("./utils.js");
  * Function that takes an array, squares its elements, filters them,
  * and sorts them in ascending order.
  *
- * @param {Array} array - An array of elements in ascending order.
- * @param {int} S - Selected number
- * @returns {Array} - The array with squared, filtered, and sorted
+ * @param {number[]} array - An array of elements in ascending order.
+ * @param {number} S - Selected number
+ * @returns {number[]} - The array with squared, filtered, and sorted
  * elements in ascending order.
  */
 function squaredAndSort(array, S) {
